@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-buttons>
+
+    <ion-title>全国</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="document"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="funnel"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="tab2-content">
+
+    <ngx-amap style="height: 100%;" [center]="[116.397428, 39.90923]" [zooms]="[3, 3]">
+        <amap-marker
+                *ngFor="let riverMapPoint of riverMapPointList"
+                [position]="[riverMapPoint.WQ_AM_PI_LNG, riverMapPoint.WQ_AM_PI_LAT]"
+                [icon]="WATER_TYPE_AMAP_MARKER_MODEL[riverMapPoint.WATER_TYPE]"
+        >
+
+        </amap-marker>
+    </ngx-amap>
+
+    <div class="nav-fixed">
+        <ion-button expand="full" color="light">
+            <ion-icon slot="icon-only" name="home"></ion-icon>
+        </ion-button>
+        <ion-button expand="full" color="light">
+            <ion-icon slot="icon-only" name="albums"></ion-icon>
+        </ion-button>
+        <ion-button expand="full" color="light">
+            <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+    </div>
+
+    <div class="footer-fixed">
+        <span>全国共有{{riverMapPointTotal}}个自动监测断面</span>
+        <span>2018-03</span>
+    </div>
+</ion-content>

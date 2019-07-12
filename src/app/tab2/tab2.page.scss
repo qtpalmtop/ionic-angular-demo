@@ -1,0 +1,40 @@
+ion-header {
+
+  ion-icon {
+    font-size: 22px;
+  }
+
+}
+
+.tab2-content {
+
+  .nav-fixed {
+    position: absolute;
+    bottom: 5em;
+    right: 1em;
+    width: 3em;
+
+    ion-button {
+      margin: 0;
+
+    }
+  }
+
+  .footer-fixed {
+    display: flex;
+    display: -webkit-flex;
+    position: absolute;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 0 1em;
+    bottom: 0;
+    height: 3em;
+    width: 100%;
+    color: #fff;
+    background: #000;
+    opacity: 0.6;
+  }
+
+}

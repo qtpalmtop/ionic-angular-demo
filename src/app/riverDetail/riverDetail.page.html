@@ -1,0 +1,170 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/" [text]="''"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>{{riverDetail.WQ_AM_PI_NAME || "加载中……"}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content
+        fullscreen
+        class="river-detail-content"
+        color="light"
+>
+    <ion-card class="detail-card">
+
+        <ion-item class="detail-card-title" lines="full">
+
+            <ion-label>站点介绍</ion-label>
+            <ion-icon slot="start" name="star" class="detail-card-icon"></ion-icon>
+        </ion-item>
+
+        <ion-card-content class="detail-card-content">
+            <p>
+                北京古北口水质自动检测战位于北京市密云县北京古北口水质自动检测战位于北京市密云县北京古北口水质自动检测战位于北京市密云县北京古北口水质自动检测战位于北京市密云县北京古北口水质自动检测战位于北京市密云县北京古北口水质自动检测战位于北京市密云县
+            </p>
+            <p>
+                <ion-button color="light" size="small" shape="round" (click)="didClickMore">展开</ion-button>
+            </p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="detail-card">
+
+        <ion-item class="detail-card-title" lines="full">
+
+            <ion-label>站点环境</ion-label>
+            <ion-icon slot="start" name="analytics" class="detail-card-icon"></ion-icon>
+        </ion-item>
+
+        <ion-card-content class="detail-card-content">
+
+            <ion-item lines="none">
+                <ion-label>
+                    <span class="dot"></span>
+                    &nbsp;&nbsp;&nbsp;流域表征图
+                </ion-label>
+            </ion-item>
+
+            <ion-img [src]="'../../assets/img/environment_1.png'"></ion-img>
+
+            <ion-item lines="none">
+                <ion-label>
+                    <span class="dot"></span>
+                    &nbsp;&nbsp;&nbsp;站房
+                </ion-label>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-thumbnail slot="start" class="detail-card-thumbnail">
+                    <ion-img [src]="'../../assets/img/environment_2.png'"></ion-img>
+                </ion-thumbnail>
+
+                <ion-thumbnail  slot="start" class="detail-card-thumbnail">
+                    <ion-img [src]="'../../assets/img/environment_2.png'"></ion-img>
+                </ion-thumbnail>
+
+                <ion-thumbnail slot="start" class="detail-card-thumbnail">
+                    <ion-img [src]="'../../assets/img/environment_2.png'"></ion-img>
+                </ion-thumbnail>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label>
+                    <span class="dot"></span>
+                    &nbsp;&nbsp;&nbsp;断面桩
+                </ion-label>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-thumbnail slot="start" class="detail-card-thumbnail">
+                    <ion-img [src]="'../../assets/img/environment_3.png'"></ion-img>
+                </ion-thumbnail>
+
+                <ion-thumbnail  slot="start" class="detail-card-thumbnail">
+                    <ion-img [src]="'../../assets/img/environment_3.png'"></ion-img>
+                </ion-thumbnail>
+
+                <ion-thumbnail slot="start" class="detail-card-thumbnail">
+                    <ion-img [src]="'../../assets/img/environment_3.png'"></ion-img>
+                </ion-thumbnail>
+            </ion-item>
+
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="detail-card">
+
+        <ion-item class="detail-card-title" lines="full">
+
+            <ion-label>水质数据</ion-label>
+            <ion-icon slot="start" name="menu" class="detail-card-icon"></ion-icon>
+            <ion-label class="detail-card-date">2018年8月1日</ion-label>
+        </ion-item>
+
+        <ion-card-content class="detail-card-content detail-card-content-table">
+
+            <ion-item lines="full" color="light" class="rivers-section-thead">
+                <ion-label>时间</ion-label>
+                <ion-label>氨氮</ion-label>
+                <ion-label>PH</ion-label>
+                <ion-label>DO</ion-label>
+                <ion-label>总磷</ion-label>
+                <ion-label>水质</ion-label>
+            </ion-item>
+
+            <ion-item-group>
+                <ion-item lines="full" *ngFor="let waterQualityItem of waterQualityList">
+                    <ion-label>{{waterQualityItem.date || "-"}}</ion-label>
+                    <ion-label>{{waterQualityItem.W21003 || "-"}}</ion-label>
+                    <ion-label>{{waterQualityItem.W01001 || "-"}}</ion-label>
+                    <ion-label>{{waterQualityItem.W01019 || "-"}}</ion-label>
+                    <ion-label>{{waterQualityItem.W21011 || "-"}}</ion-label>
+                    <ion-label>
+                        <div class="{{'detail-card-badge detail-card-badge-' + WATER_TYPE_LEVEL_MODEL[waterQualityItem.WATER_TYPE_JB]}}">
+                            {{waterQualityItem.WATER_TYPE_JB || "-"}}
+                        </div>
+                    </ion-label>
+                </ion-item>
+
+            </ion-item-group>
+
+
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="detail-card">
+
+        <ion-item class="detail-card-title" lines="full">
+
+            <ion-label>水质变化情况</ion-label>
+            <ion-icon slot="start" name="stats" class="detail-card-icon"></ion-icon>
+        </ion-item>
+
+        <ion-card-content class="detail-card-content detail-card-content-table">
+
+                <ion-row align-items-center>
+                    <ion-col size="3">
+                        <ion-select
+                                (ionChange)="didSelectChange(item)"
+                                [(ngModel)]="waterLevel"
+                                class="detail-card-select"
+                        >
+                            <ion-select-option value="">水质级别</ion-select-option>
+                            <ion-select-option *ngFor="let option of waterLevelOptions" value="{{option.value}}">{{option.name}}</ion-select-option>
+
+                        </ion-select>
+                    </ion-col>
+                    <ion-col size="2" offset="7">
+                        <ion-label>2018年</ion-label>
+                    </ion-col>
+                </ion-row>
+
+            <div echarts [options]="chartOption"></div>
+
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

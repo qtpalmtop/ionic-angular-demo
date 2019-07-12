@@ -1,0 +1,69 @@
+.tab1-content {
+  font-size: 16px;
+
+  ion-list {
+    margin-bottom: 10px;
+    background: #f4f5f8;
+
+    ion-item-group {
+      margin-bottom: 10px;
+    }
+  }
+
+  .dot {
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    background: #4c8dff;
+    top: 50%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .rivers-section {
+    &-title {
+      font-size: 1.2em;
+    }
+
+    &-content {
+      font-size: .8em;
+    }
+
+    &-badge {
+      padding: .1em .3em;
+      font-size: .7em;
+      color: #fff;
+      border-radius: .3em;
+
+      &-default {
+        background: #989aa2;
+      }
+
+      &-primary {
+        background: #4c8dff;
+      }
+
+      &-success {
+        background: #10dc60;
+      }
+
+      &-warn {
+        background: #ff9f4c;
+      }
+
+      &-danger {
+        background: #d33939;
+      }
+    }
+
+    &-date {
+      font-size: .8em;
+      color: #c5c5c5;
+      text-align: right;
+    }
+  }
+}
